@@ -9,12 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as FinancialRouteImport } from './routes/financial'
 import { Route as EnterpriseRouteImport } from './routes/enterprise'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FinancialRoute = FinancialRouteImport.update({
   id: '/financial',
   path: '/financial',
@@ -40,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +59,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
+  '/reviews': typeof ReviewsRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
+  '/reviews': typeof ReviewsRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +78,37 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
+  '/reviews': typeof ReviewsRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/enterprise' | '/financial'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/enterprise'
+    | '/financial'
+    | '/reviews'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/enterprise' | '/financial'
-  id: '__root__' | '/' | '/about' | '/contact' | '/enterprise' | '/financial'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/enterprise'
+    | '/financial'
+    | '/reviews'
+    | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/enterprise'
+    | '/financial'
+    | '/reviews'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +117,19 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EnterpriseRoute: typeof EnterpriseRoute
   FinancialRoute: typeof FinancialRoute
+  ReviewsRoute: typeof ReviewsRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/financial': {
       id: '/financial'
       path: '/financial'
@@ -116,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +181,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EnterpriseRoute: EnterpriseRoute,
   FinancialRoute: FinancialRoute,
+  ReviewsRoute: ReviewsRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
