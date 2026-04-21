@@ -3,7 +3,7 @@ import { Twitter, Linkedin, Link as LinkIcon } from "lucide-react";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BLOG_POSTS } from "@/data/blog";
+import { BLOG_POSTS, type BlogPost } from "@/data/blog";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -44,10 +44,10 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function BlogPostPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: BlogPost };
   const related = BLOG_POSTS.filter((p) => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   // Build a TOC from paragraphs (simple [PLACEHOLDER] strategy)
-  const sections = post.content.split("\n\n").map((para, i) => ({
+  const sections = post.content.split("\n\n").map((para: string, i: number) => ({
     id: `section-${i + 1}`,
     label: `Section ${i + 1}`,
     text: para,
