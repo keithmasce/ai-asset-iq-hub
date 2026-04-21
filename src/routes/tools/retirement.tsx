@@ -101,7 +101,7 @@ function RetirementPage() {
                     <YAxis stroke="var(--muted-foreground)" fontSize={12} tickFormatter={(v: number) => `${Math.round(v / 1000)}k`} />
                     <Tooltip
                       contentStyle={{ background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 8 }}
-                      formatter={(v: number) => fmt.format(v)}
+                      formatter={(v) => fmt.format(Number(v))}
                       labelFormatter={(v) => `Age ${v}`}
                     />
                     <Area type="monotone" dataKey="nominal" name="Nominal" stroke="var(--chart-1)" strokeWidth={2} fill="url(#gNom)" />
