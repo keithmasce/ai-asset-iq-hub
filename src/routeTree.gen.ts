@@ -18,6 +18,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ToolsRetirementRouteImport } from './routes/tools/retirement'
 import { Route as ToolsFinancialPlanRouteImport } from './routes/tools/financial-plan'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
@@ -64,6 +65,11 @@ const ToolsFinancialPlanRoute = ToolsFinancialPlanRouteImport.update({
   path: '/tools/financial-plan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
   '/reviews': typeof ReviewsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/financial-plan': typeof ToolsFinancialPlanRoute
   '/tools/retirement': typeof ToolsRetirementRoute
   '/blog/': typeof BlogIndexRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
   '/reviews': typeof ReviewsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/financial-plan': typeof ToolsFinancialPlanRoute
   '/tools/retirement': typeof ToolsRetirementRoute
   '/blog': typeof BlogIndexRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/enterprise': typeof EnterpriseRoute
   '/financial': typeof FinancialRoute
   '/reviews': typeof ReviewsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/tools/financial-plan': typeof ToolsFinancialPlanRoute
   '/tools/retirement': typeof ToolsRetirementRoute
   '/blog/': typeof BlogIndexRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/financial'
     | '/reviews'
+    | '/blog/$slug'
     | '/tools/financial-plan'
     | '/tools/retirement'
     | '/blog/'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/financial'
     | '/reviews'
+    | '/blog/$slug'
     | '/tools/financial-plan'
     | '/tools/retirement'
     | '/blog'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/enterprise'
     | '/financial'
     | '/reviews'
+    | '/blog/$slug'
     | '/tools/financial-plan'
     | '/tools/retirement'
     | '/blog/'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   EnterpriseRoute: typeof EnterpriseRoute
   FinancialRoute: typeof FinancialRoute
   ReviewsRoute: typeof ReviewsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ToolsFinancialPlanRoute: typeof ToolsFinancialPlanRoute
   ToolsRetirementRoute: typeof ToolsRetirementRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsFinancialPlanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnterpriseRoute: EnterpriseRoute,
   FinancialRoute: FinancialRoute,
   ReviewsRoute: ReviewsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ToolsFinancialPlanRoute: ToolsFinancialPlanRoute,
   ToolsRetirementRoute: ToolsRetirementRoute,
   BlogIndexRoute: BlogIndexRoute,
