@@ -33,10 +33,14 @@ export const Route = createRootRoute({
       { title: "AI Asset IQ — Intelligent Assets, Smarter Futures" },
       { name: "description", content: "AI-powered consulting for enterprise assets and personal financial growth." },
       { name: "author", content: "AI Asset IQ" },
-      { property: "og:title", content: "AI Asset IQ" },
+      { property: "og:title", content: "AI Asset IQ — Intelligent Assets, Smarter Futures" },
       { property: "og:description", content: "AI-powered consulting for enterprise assets and personal financial growth." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "AI Asset IQ — Intelligent Assets, Smarter Futures" },
+      { name: "twitter:description", content: "AI-powered consulting for enterprise assets and personal financial growth." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fe17ea3f-9da3-4cc2-923c-a62764a9ab75/id-preview-5dd2545f--63c027ff-771c-442c-a922-94eaded6e4e2.lovable.app-1776797341619.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fe17ea3f-9da3-4cc2-923c-a62764a9ab75/id-preview-5dd2545f--63c027ff-771c-442c-a922-94eaded6e4e2.lovable.app-1776797341619.png" },
     ],
     links: [
       {
