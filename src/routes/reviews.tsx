@@ -120,8 +120,7 @@ function ReviewsPage() {
                 <p className="mt-3 text-sm leading-relaxed">"{r.text}"</p>
                 <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 text-xs">
                   <div>
-                    <p className="font-semibold">{r.name}</p>
-                    <p className="text-muted-foreground">{r.role}</p>
+                    <p className="font-semibold text-muted-foreground">{r.role}</p>
                   </div>
                   <span className="rounded-full bg-accent/10 px-2 py-0.5 text-accent">{r.service}</span>
                 </div>
