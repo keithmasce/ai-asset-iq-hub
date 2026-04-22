@@ -161,8 +161,7 @@ function HomePage() {
                   </div>
                   <p className="mt-3 line-clamp-5 text-sm">"{r.text}"</p>
                   <div className="mt-4 border-t border-border/60 pt-3 text-xs">
-                    <p className="font-semibold">{r.name}</p>
-                    <p className="text-muted-foreground">{r.role}</p>
+                    <p className="font-semibold text-muted-foreground">{r.role}</p>
                   </div>
                 </Card>
               </motion.div>
