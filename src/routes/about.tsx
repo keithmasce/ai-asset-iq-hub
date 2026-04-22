@@ -3,6 +3,7 @@ import { Linkedin, Compass, Lightbulb, HandshakeIcon, Trophy } from "lucide-reac
 import { SiteShell } from "@/components/layout/SiteShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { Card } from "@/components/ui/card";
+import keithPhoto from "@/assets/keith-mascarenhas.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,12 +17,26 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-// [PLACEHOLDER] team
 const team = [
-  { name: "Alex Morgan", title: "Founder & Managing Partner" },
-  { name: "Jordan Reyes", title: "Head of Enterprise AI" },
-  { name: "Samira Patel", title: "Lead Financial Strategist" },
-  { name: "Chris Anderson", title: "Director of Engineering" },
+  {
+    name: "Keith Mascarenhas",
+    title: "Co-Founder",
+    bio: "Co-founder of AI Asset IQ, helping organizations and families make smarter decisions across enterprise and financial assets.",
+    linkedin: "https://www.linkedin.com/in/keith-mascarenhas-03a53434",
+    photo: keithPhoto,
+  },
+  {
+    name: "[PLACEHOLDER] Co-Founder",
+    title: "Co-Founder",
+    bio: "[PLACEHOLDER] Keith's wife and co-founder of AI Asset IQ.",
+    linkedin: "#",
+  },
+  {
+    name: "[PLACEHOLDER] Partner",
+    title: "Partner",
+    bio: "[PLACEHOLDER] Partner profile details to be added.",
+    linkedin: "#",
+  },
 ];
 
 const values = [
@@ -75,14 +90,20 @@ function AboutPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold">Team</h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {team.map((m) => (
             <Card key={m.name} className="border-border/60 p-6 text-center">
-              {/* [PLACEHOLDER] avatar */}
-              <div className="mx-auto h-24 w-24 rounded-full bg-gradient-accent" />
+              {m.photo ? (
+                <img src={m.photo} alt={`${m.name}, ${m.title} at AI Asset IQ`} className="mx-auto h-28 w-28 rounded-full object-cover" />
+              ) : (
+                <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-gradient-accent text-xs font-medium text-primary-foreground">
+                  [PLACEHOLDER]
+                </div>
+              )}
               <h4 className="mt-4 font-semibold">{m.name}</h4>
               <p className="text-sm text-muted-foreground">{m.title}</p>
-              <a href="#" className="mt-3 inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-smooth hover:border-accent hover:text-accent">
+              <p className="mt-3 text-sm text-muted-foreground">{m.bio}</p>
+              <a href={m.linkedin} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-smooth hover:border-accent hover:text-accent" aria-label={`${m.name} LinkedIn profile`}>
                 <Linkedin className="h-4 w-4" />
               </a>
             </Card>
