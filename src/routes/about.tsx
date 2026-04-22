@@ -4,6 +4,7 @@ import { SiteShell } from "@/components/layout/SiteShell";
 import { PageHero } from "@/components/sections/PageHero";
 import { Card } from "@/components/ui/card";
 import keithPhoto from "@/assets/keith-mascarenhas.jpg";
+import diyaPhoto from "@/assets/diya-shivlani.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -26,10 +27,11 @@ const team = [
     photo: keithPhoto,
   },
   {
-    name: "[PLACEHOLDER] Co-Founder",
+    name: "Diya Shivlani",
     title: "Co-Founder",
-    bio: "[PLACEHOLDER] Keith's wife and co-founder of AI Asset IQ.",
-    linkedin: "#",
+    bio: "Co-founder of AI Asset IQ, partnering with Keith to build trusted AI-powered consulting for enterprise and financial growth.",
+    linkedin: "https://www.linkedin.com/in/diyashivlani",
+    photo: diyaPhoto,
   },
   {
     name: "[PLACEHOLDER] Partner",
